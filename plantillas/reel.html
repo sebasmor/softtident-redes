@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* Reel vertical 1080x1920. Los márgenes dejan libre la zona que tapan los botones de Instagram. */
+  :root {
+    --oscuro: #046C80;
+    --profundo: #034E5D;
+    --celeste: #88C3C7;
+    --palido: #F4FAFA;
+    --linea: #C9E2E4;
+    --texto: #2E4A50;
+    --suave: #4F6A70;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { width: 1080px; height: 1920px; overflow: hidden; position: relative; font-family: 'Nunito Sans', sans-serif; color: var(--texto); }
+  .escena { position: absolute; inset: 0; opacity: 0; background: #FFFFFF; }
+  .escena.oscuro { background: var(--oscuro); color: #FFFFFF; }
+  .escena.palido { background: var(--palido); }
+  .marca { position: absolute; top: 250px; left: 100px; height: 76px; }
+  .cuerpo { position: absolute; left: 100px; right: 130px; top: 380px; bottom: 560px; display: flex; flex-direction: column; justify-content: center; }
+  .cuerpo.centro { align-items: center; text-align: center; }
+  .etiqueta { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 32px; letter-spacing: 9px; text-transform: uppercase; color: var(--oscuro); margin-bottom: 30px; }
+  .oscuro .etiqueta { color: #BFE0E3; }
+  .titulo { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 112px; line-height: 1.07; color: var(--profundo); }
+  .titulo.mediano { font-size: 80px; line-height: 1.12; }
+  .oscuro .titulo { color: #FFFFFF; }
+  .raya { width: 90px; height: 4px; background: var(--celeste); margin: 52px 0; }
+  .centro .raya { margin: 52px auto; }
+  .texto { font-size: 48px; line-height: 1.42; color: var(--suave); }
+  .oscuro .texto { color: #E6F3F4; }
+  .texto.grande { font-size: 62px; line-height: 1.38; }
+  .punto { display: flex; align-items: center; gap: 26px; padding: 30px 0; border-top: 2px solid var(--linea); font-size: 50px; }
+  .punto:last-child { border-bottom: 2px solid var(--linea); }
+  .punto svg { flex: none; }
+  .pregunta { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 66px; line-height: 1.15; color: var(--oscuro); }
+  .respuesta { font-size: 50px; line-height: 1.42; margin-top: 44px; }
+  .dato { padding: 30px 0; border-top: 2px solid var(--linea); }
+  .dato:last-child { border-bottom: 2px solid var(--linea); }
+  .dato .rotulo { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 28px; letter-spacing: 6px; text-transform: uppercase; color: var(--oscuro); }
+  .dato .valor { font-size: 48px; line-height: 1.35; margin-top: 8px; }
+  .chico { font-size: 40px; color: var(--suave); }
+  .oscuro .chico { color: #BFE0E3; }
+  .numero { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 104px; letter-spacing: 1px; line-height: 1.1; color: var(--oscuro); margin: 18px 0 40px; }
+  .oscuro .numero { color: #FFFFFF; }
+  .logo img { width: 420px; height: auto; display: block; margin-bottom: 70px; }
+</style>
+</head>
+<body>
+{% for e in escenas %}
+<section class="escena {{ e.fondo }}" data-dur="{{ e.dur }}" data-paso="{{ e.paso }}">
+  <img class="marca" src="{{ marca }}/{{ 'marca-blanco.png' if e.fondo == 'oscuro' else 'marca-color.png' }}" alt="">
+  <div class="cuerpo {{ e.alinear }}">
+    {% for el in e.els %}
+    {% if el.c == 'punto' %}
+    <div class="el punto"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#046C80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>{{ el.h }}</span></div>
+    {% elif el.c == 'dato' %}
+    <div class="el dato"><div class="rotulo">{{ el.l }}</div><div class="valor">{{ el.h }}</div></div>
+    {% else %}
+    <div class="el {{ el.c }}">{{ el.h }}</div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}
+<script>
+  // Línea de tiempo: cada escena entra y sale con un fundido y sus elementos suben uno tras otro.
+  // La primera escena ya se ve completa en el primer cuadro (sirve de portada).
+  const escenas = [...document.querySelectorAll('.escena')];
+  const total = escenas.reduce((s, e) => s + Number(e.dataset.dur), 0);
+  const T = total * 1000;
+  let ini = 0;
+  escenas.forEach((e, i) => {
+    const fin = ini + Number(e.dataset.dur);
+    const primera = i === 0, ultima = i === escenas.length - 1;
+    const k = [];
+    k.push({ opacity: primera ? 1 : 0, offset: 0 });
+    if (!primera) {
+      k.push({ opacity: 0, offset: ini / total });
+      k.push({ opacity: 1, offset: (ini + 0.4) / total });
+    }
+    if (ultima) {
+      k.push({ opacity: 1, offset: 1 });
+    } else {
+      // Se queda visible mientras la siguiente aparece encima (fundido cruzado, sin destello).
+      k.push({ opacity: 1, offset: (fin + 0.4) / total });
+      k.push({ opacity: 0, offset: (fin + 0.42) / total });
+      k.push({ opacity: 0, offset: 1 });
+    }
+    e.animate(k, { duration: T, fill: 'both' });
+
+    const paso = Number(e.dataset.paso);
+    e.querySelectorAll('.el').forEach((el, j) => {
+      if (primera) {
+        // Movimiento suave para que la portada no quede quieta.
+        el.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.035)' }],
+                   { duration: e.dataset.dur * 1000, fill: 'both', easing: 'ease-out' });
+        el.style.transformOrigin = e.querySelector('.cuerpo.centro') ? 'center' : 'left center';
+        return;
+      }
+      el.animate([{ opacity: 0, transform: 'translateY(46px)' }, { opacity: 1, transform: 'translateY(0)' }],
+                 { duration: 650, delay: (ini + 0.3 + j * paso) * 1000, fill: 'both', easing: 'cubic-bezier(.2,.7,.2,1)' });
+    });
+    ini = fin;
+  });
+  const animaciones = document.getAnimations();
+  animaciones.forEach(a => a.pause());
+  window.duracion = total;
+  window.irA = ms => animaciones.forEach(a => { a.currentTime = ms; });
+  window.irA(0);
+</script>
+</body>
+</html>

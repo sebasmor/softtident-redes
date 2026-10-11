@@ -1,6 +1,7 @@
-name: Generar imágenes
+name: Generar imágenes y reels
 
-# Cada vez que cambias el contenido, las plantillas o la marca, se rehacen las imágenes.
+# Cada vez que cambias el contenido, las plantillas o la marca, se rehacen las imágenes
+# y los reels que cambiaron (los reels tardan 1 o 2 minutos cada uno).
 on:
   push:
     branches: [main]
@@ -19,12 +20,14 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt && playwright install --with-deps chromium
+      - run: sudo apt-get install -y ffmpeg
       - run: python scripts/generar_imagenes.py
+      - run: python scripts/generar_reels.py
       - run: python scripts/hoja_manual.py
-      - name: Guardar imágenes
+      - name: Guardar imágenes y reels
         run: |
           git config user.name "softtident-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add imagenes PUBLICAR-A-MANO.md
-          git diff --cached --quiet || git commit -m "Imágenes y hoja manual actualizadas"
+          git add imagenes videos PUBLICAR-A-MANO.md
+          git diff --cached --quiet || git commit -m "Imágenes, reels y hoja manual actualizados"
           git push

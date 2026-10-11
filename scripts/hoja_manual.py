@@ -1,4 +1,4 @@
-"""Crea PUBLICAR-A-MANO.md: cada publicación aprobada con su imagen y su texto listo para copiar.
+"""Crea PUBLICAR-A-MANO.md: cada publicación aprobada con su reel, su imagen y su texto listo para copiar.
 
 Sirve para programar las publicaciones a mano en la app de Instagram.
 
@@ -16,13 +16,18 @@ HORA = "9:45"
 
 INSTRUCCIONES = """# Publicar a mano en Instagram
 
-Para cada publicación de abajo:
+Cada sábado sale un **reel**. Para cada uno de abajo:
 
-1. Toca **Descargar imagen** y guárdala en el celular (mantén presionada la imagen → *Descargar* o *Guardar*).
-2. En Instagram: **+** → **Publicación** → elige la imagen → **Siguiente**.
-3. Copia el texto (botón de copiar del recuadro gris) y pégalo.
-4. **Más opciones** → **Programar esta publicación** → elige la fecha y la hora indicadas → **Programar**.
-5. Revisa tus programadas en tu perfil → ☰ → **Contenido programado**.
+1. Toca **Descargar reel** y guárdalo en el celular (en la página que se abre: ⋮ o mantener
+   presionado → *Descargar*).
+2. En Instagram: **+** → **Reel** → elige el video → **Siguiente**.
+3. Toca **Audio** (ícono de nota musical), elige una canción y toca **Listo** → **Siguiente**.
+4. Copia el texto (botón de copiar del recuadro gris) y pégalo en la descripción.
+5. **Más opciones** → **Programar este reel** → elige la fecha y la hora indicadas → **Programar**.
+6. Revisa tus programadas en tu perfil → ☰ → **Contenido programado**.
+
+Si un día prefieres publicar la imagen en vez del reel, usa **Descargar imagen** y en el
+paso 2 elige **Publicación** (sin el paso 3).
 
 Esta hoja muestra solo lo aprobado de hoy en adelante. No sabe qué ya programaste:
 revísalo en **Contenido programado**.
@@ -50,10 +55,14 @@ def main():
         if config.get("hashtags"):
             texto += "\n\n" + config["hashtags"]
         imagen = f"imagenes/{pub['id']}.jpg"
+        video = f"videos/{pub['id']}.mp4"
+        enlaces = f"[⬇️ Descargar imagen]({imagen}?raw=true)"
+        if (RAIZ / video).exists():
+            enlaces = f"[🎬 Descargar reel]({video}?raw=true) · " + enlaces
         partes.append(
             f"\n---\n\n## {fecha_larga(pub['fecha'])} · {HORA}\n\n"
             f"<img src=\"{imagen}\" width=\"320\">\n\n"
-            f"[⬇️ Descargar imagen]({imagen}?raw=true)\n\n"
+            f"{enlaces}\n\n"
             f"```text\n{texto}\n```\n"
         )
 
