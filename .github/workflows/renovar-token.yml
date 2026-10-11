@@ -2,9 +2,10 @@ name: Renovar token de Instagram
 
 # El token dura 60 días. El día 1 de cada mes se renueva solo.
 # Necesita el secreto GH_PAT (un token de GitHub con permiso para editar secretos).
+# APAGADO mientras se publica a mano. Para encenderlo, borra los "#" de schedule y cron.
 on:
-  schedule:
-    - cron: "0 13 1 * *"
+  # schedule:
+  #   - cron: "0 13 1 * *"
   workflow_dispatch:
 
 jobs:

@@ -1,10 +1,12 @@
 name: Publicar en Instagram
 
-# Todos los días a las 9:45 de Ecuador (14:45 UTC) revisa si hay algo aprobado para hoy.
-# Como solo hay publicaciones los sábados, los demás días no hace nada.
+# APAGADO: por ahora se publica a mano (ver PUBLICAR-A-MANO.md) porque no hay token de Instagram.
+# Para encenderlo cuando tengas IG_TOKEN, borra los "#" de las líneas de schedule y cron.
+# OJO: antes de encenderlo, borra lo que hayas programado a mano en Instagram o saldrá dos veces.
+# Encendido, revisa todos los días a las 9:45 de Ecuador (14:45 UTC) si hay algo aprobado para hoy.
 on:
-  schedule:
-    - cron: "45 14 * * *"
+  # schedule:
+  #   - cron: "45 14 * * *"
   workflow_dispatch:
 
 permissions:

@@ -4,6 +4,12 @@ Este proyecto publica en Instagram el contenido del consultorio dental SOFTTIDEN
 (San Gerardo, Camilo Ponce Enríquez, Ecuador). Claude Code genera el contenido de cada
 mes; la dueña o el dueño lo aprueba; GitHub lo publica solo.
 
+**Modo actual: publicación a mano.** No hay token de Instagram (no se pudo verificar el
+celular en Meta). Los flujos `publicar.yml` y `renovar-token.yml` están apagados. Las
+publicaciones se programan a mano en la app de Instagram con `PUBLICAR-A-MANO.md`, que
+genera `scripts/hoja_manual.py` (el flujo "Generar imágenes" lo corre solo). Tras aprobar
+contenido nuevo, ejecuta también `python scripts/hoja_manual.py` antes del commit.
+
 ## Cómo funciona
 - `config.json`: datos fijos del consultorio (WhatsApp, horario, ubicación, servicios).
 - `contenido/AAAA-MM.json`: publicaciones del mes. Cada una tiene `id`, `fecha`,
