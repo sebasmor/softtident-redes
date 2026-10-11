@@ -1,0 +1,34 @@
+name: Publicar en Instagram
+
+# Todos los días a las 9:45 de Ecuador (14:45 UTC) revisa si hay algo aprobado para hoy.
+# Como solo hay publicaciones los sábados, los demás días no hace nada.
+on:
+  schedule:
+    - cron: "45 14 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: publicar
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Publicar lo que toca hoy
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python scripts/publicar.py
+      - name: Marcar como publicado
+        if: always()
+        run: |
+          git config user.name "softtident-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add contenido
+          git diff --cached --quiet || git commit -m "Publicación registrada"
+          git push

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --oscuro: #046C80;     /* verde azulado del logo */
+    --profundo: #034E5D;   /* títulos */
+    --celeste: #88C3C7;    /* celeste del logo */
+    --palido: #F4FAFA;
+    --linea: #C9E2E4;
+    --texto: #2E4A50;
+    --suave: #4F6A70;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { width: 1080px; height: 1350px; font-family: 'Nunito Sans', sans-serif; color: var(--texto); }
+  .lienzo { width: 1080px; height: 1350px; padding: 96px 110px 90px; display: flex; flex-direction: column; background: #FFFFFF; }
+  .lienzo.oscuro { background: var(--oscuro); color: #FFFFFF; }
+  .lienzo.palido { background: var(--palido); }
+  .marca { height: 84px; width: auto; align-self: flex-start; display: block; }
+  .etiqueta { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 26px; letter-spacing: 8px; text-transform: uppercase; color: var(--oscuro); }
+  .oscuro .etiqueta { color: #BFE0E3; }
+  h1 { margin: 24px 0 0; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 96px; line-height: 1.08; color: var(--profundo); }
+  .oscuro h1 { color: #FFFFFF; }
+  .raya { width: 80px; height: 3px; background: var(--celeste); }
+  .parrafo { font-size: 34px; line-height: 1.45; color: var(--suave); max-width: 800px; margin: 0; }
+  .oscuro .parrafo { color: #E6F3F4; }
+  .lista { display: flex; flex-direction: column; }
+  .lista .fila { display: flex; align-items: center; gap: 22px; padding: 22px 0; border-top: 1px solid var(--linea); font-size: 34px; }
+  .lista .fila:last-child { border-bottom: 1px solid var(--linea); }
+  .pie { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
+  .pie .chico { font-size: 28px; color: var(--suave); }
+  .oscuro .pie .chico { color: #BFE0E3; }
+  .numero { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 60px; letter-spacing: 1px; line-height: 1; color: var(--oscuro); }
+  .oscuro .numero { color: #FFFFFF; }
+</style>
+</head>
+<body>
+{% block contenido %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "mes": "Octubre y noviembre 2026",
+  "publicaciones": [
+    {
+      "id": "2026-10-17-presentacion",
+      "fecha": "2026-10-17",
+      "aprobado": true,
+      "plantilla": "presentacion",
+      "datos": {
+        "titulo": "Tu consultorio dental,<br>aquí en San Gerardo."
+      },
+      "texto_publicacion": "¡Hola, San Gerardo! Somos SOFTTIDENT, tu consultorio dental aquí mismo, en la vía a Pueblo Nuevo.\n\nTe atendemos en limpiezas, extracciones, restauraciones, endodoncias, prótesis y blanqueamiento.\n\n🕐 Lunes a viernes de 9:00 a 18:00 y sábados de 9:00 a 14:00. Fuera de ese horario, con cita previa.\n🚨 También atendemos emergencias.\n💵 Pagos en efectivo o transferencia.\n\n📲 Agenda tu cita por WhatsApp: 099 406 4555"
+    },
+    {
+      "id": "2026-10-24-emergencias",
+      "fecha": "2026-10-24",
+      "aprobado": true,
+      "plantilla": "destacado",
+      "datos": {
+        "etiqueta": "Emergencias dentales",
+        "titulo": "¿Te duele<br>una muela?",
+        "texto": "El dolor casi nunca se va solo. Escríbenos y te decimos cuándo puedes venir."
+      },
+      "texto_publicacion": "😣 ¿Te duele una muela y no te deja trabajar ni dormir?\n\nEl dolor de muela casi nunca se va solo: muchas veces es una señal de infección que, si se deja pasar, se complica y el tratamiento sale más caro.\n\nEn SOFTTIDENT atendemos emergencias. Escríbenos y te decimos cuándo puedes venir.\n\n📲 WhatsApp: 099 406 4555\n📍 San Gerardo, vía a Pueblo Nuevo"
+    },
+    {
+      "id": "2026-10-31-limpieza",
+      "fecha": "2026-10-31",
+      "aprobado": true,
+      "plantilla": "lista",
+      "datos": {
+        "etiqueta": "Cada 6 meses",
+        "titulo": "Limpieza<br>dental",
+        "texto": "Aunque te cepilles bien, el sarro se acumula. Una limpieza:",
+        "puntos": [
+          "Quita el sarro y las manchas",
+          "Previene caries y sangrado de encías",
+          "Mejora el mal aliento",
+          "No duele y es rápida"
+        ]
+      },
+      "texto_publicacion": "✨ ¿Sabías que aunque te cepilles bien, se acumula sarro que el cepillo no puede quitar?\n\nLa limpieza dental profesional:\n✅ Quita el sarro y las manchas\n✅ Ayuda a prevenir caries y sangrado de encías\n✅ Mejora el mal aliento\n✅ No duele y dura poco\n\nLo recomendable es hacerla cada 6 meses.\n\n📲 Agenda tu limpieza en SOFTTIDENT: 099 406 4555"
+    },
+    {
+      "id": "2026-11-07-preguntas",
+      "fecha": "2026-11-07",
+      "aprobado": true,
+      "plantilla": "preguntas",
+      "datos": {
+        "titulo": "Lo que más<br>nos preguntan",
+        "preguntas": [
+          {"p": "¿El blanqueamiento daña los dientes?", "r": "Hecho por un profesional y tras una revisión, es seguro. Puede dar algo de sensibilidad unos días."},
+          {"p": "¿Atienden emergencias?", "r": "Sí. Escríbenos y te decimos cuándo venir."},
+          {"p": "¿Cuál es el horario?", "r": "Lunes a viernes 9:00–18:00 y sábados 9:00–14:00. Fuera de ese horario, con cita previa."},
+          {"p": "¿Atienden a niños?", "r": "Sí, también cuidamos la sonrisa de los más pequeños."},
+          {"p": "¿Cuánto cuesta y cómo pago?", "r": "Te damos el precio antes de empezar. Pagas en efectivo o por transferencia."}
+        ]
+      },
+      "texto_publicacion": "❓ Preguntas que nos hacen seguido en SOFTTIDENT:\n\n🦷 ¿El blanqueamiento daña los dientes? Hecho por un profesional y después de una revisión, es un tratamiento seguro. Puede dar algo de sensibilidad unos días.\n💵 ¿Cómo puedo pagar? En efectivo o por transferencia.\n🚨 ¿Atienden emergencias? Sí, escríbenos y te decimos cuándo venir.\n🕐 ¿Cuál es el horario? Lunes a viernes de 9:00 a 18:00 y sábados de 9:00 a 14:00. Fuera de ese horario, atendemos con cita previa.\n📍 ¿Dónde están? San Gerardo, vía a Pueblo Nuevo.\n\n¿Tienes otra pregunta? Déjala en los comentarios o escríbenos 📲 099 406 4555"
+    }
+  ]
+}

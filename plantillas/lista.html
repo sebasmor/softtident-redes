@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{# Tratamientos o consejos: título y hasta 5 puntos con check. #}
+{% block contenido %}
+<div class="lienzo palido">
+  <img class="marca" src="{{ marca }}/marca-color.png" alt="">
+  <div class="etiqueta" style="margin-top: 110px;">{{ etiqueta }}</div>
+  <h1>{{ titulo | safe }}</h1>
+  {% if texto %}<p class="parrafo" style="margin-top: 36px;">{{ texto }}</p>{% endif %}
+  <div class="lista" style="margin-top: 36px;">
+    {% for item in puntos %}
+    <div class="fila">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#046C80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      <span>{{ item }}</span>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="pie" style="flex-direction: row; align-items: flex-end; justify-content: space-between;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <div class="chico">Agenda por WhatsApp</div>
+      <div class="numero" style="font-size: 56px;">{{ config.whatsapp }}</div>
+    </div>
+    <div class="chico" style="font-size: 24px; text-align: right; line-height: 1.5;">{{ config.ubicacion_2_lineas | safe }}</div>
+  </div>
+</div>
+{% endblock %}

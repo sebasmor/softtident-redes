@@ -1,0 +1,3 @@
+__pycache__/
+plantillas/_tmp_*.html
+.env

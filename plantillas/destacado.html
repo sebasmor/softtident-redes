@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{# Mensaje fuerte sobre fondo verde azulado: emergencias, avisos, feriados. #}
+{% block contenido %}
+<div class="lienzo oscuro">
+  <img class="marca" src="{{ marca }}/marca-blanco.png" alt="">
+  <div class="etiqueta" style="margin-top: 150px;">{{ etiqueta }}</div>
+  <h1 style="margin-top: 28px;">{{ titulo | safe }}</h1>
+  <div class="raya" style="margin-top: 52px;"></div>
+  <p class="parrafo" style="margin-top: 52px; max-width: 780px;">{{ texto }}</p>
+  <div class="pie">
+    <div class="chico">WhatsApp</div>
+    <div class="numero" style="font-size: 64px;">{{ config.whatsapp }}</div>
+    <div class="chico" style="margin-top: 10px;">{{ config.ubicacion }}</div>
+  </div>
+</div>
+{% endblock %}

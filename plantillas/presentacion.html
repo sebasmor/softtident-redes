@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{# Presentación del consultorio: logo grande, título y lista de servicios. #}
+{% block contenido %}
+<div class="lienzo" style="align-items: center; text-align: center;">
+  <img src="{{ marca }}/logo-color.png" alt="" style="width: 340px; height: auto;">
+  <h1 style="margin-top: 88px; font-size: 58px; line-height: 1.2;">{{ titulo | safe }}</h1>
+  <div class="raya" style="margin-top: 48px;"></div>
+  <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; row-gap: 22px; font-size: 32px;">
+    {% for s in config.servicios %}<div>{{ s }}</div>{% endfor %}
+  </div>
+  <div class="pie" style="align-items: center; gap: 14px;">
+    <div class="chico">Te damos el precio antes de empezar · {{ config.pagos }}</div>
+    <div class="chico">{{ config.horario_corto }} · Emergencias</div>
+    <div class="chico">{{ config.ubicacion }}</div>
+    <div class="numero" style="margin-top: 22px; font-size: 44px;">WhatsApp {{ config.whatsapp }}</div>
+  </div>
+</div>
+{% endblock %}
